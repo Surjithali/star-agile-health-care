@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment # Kubernetes resource kind we are creating
 metadata:
-  name: spring-boot-k8s-deployment
+  name: spring-k8s-deployment
 spec:
   selector:
     matchLabels:
-      app: spring-boot-k8s
+      app: spring-boot-k8s-1
   replicas: 2 # Number of replicas that will be created for this deployment
   template:
     metadata:
       labels:
-        app: spring-boot-k8s
+        app: spring-boot-k8s-1
     spec:
       containers:
-        - name: spring-boot-k8s
+        - name: spring-boot-k8s-1
           image: surjithali/project21august:v1 # Image that will be used to containers in the cluster
           imagePullPolicy: IfNotPresent
           ports:
@@ -31,6 +31,6 @@ spec:
     app: spring-boot-k8s
   ports:
     - protocol: "TCP"
-      port: 8092 # The port that the service is running on in the cluster
-      targetPort: 8092 # The port exposed by the service
+      port: 8091 # The port that the service is running on in the cluster
+      targetPort: 8091 # The port exposed by the service
   type: NodePort # type of the service.
